@@ -28,7 +28,7 @@ class MailSlurpClient:
         return data['payload']
 
     def get_messages(self, inbox_id):
-        url = 'http://api.mailslurp.com/inboxes/%s?apiKey=%s' % (inbox_id , self.API_KEY)
+        url = 'http://api.mailslurp.com/inboxes/%s?apiKey=%s' % (inbox_id, self.API_KEY)
         response = requests.get(url)
 
         data = json.loads(response.content.decode())
@@ -46,7 +46,6 @@ class MailSlurpClient:
             for part in msg.get_payload():
 
                 print("%s, %s" % (part.get_content_type(), part.get_content_charset()))
-
 
                 if part.get_content_charset() is None:
                     # We cannot know the character set, so return decoded "something"
@@ -67,8 +66,6 @@ class MailSlurpClient:
                 return html.strip()
         else:
             return msg.get_payload(decode=True).decode('utf-8')
-
-
 
     @staticmethod
     def has_not_payload_raise_runtime_error(dd):
