@@ -3,7 +3,7 @@ import json
 from email import message_from_string
 
 
-class MainSlurpClient:
+class MailSlurpClient:
     API_KEY = ''
 
     def __init__(self, api_key=''):
