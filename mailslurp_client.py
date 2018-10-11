@@ -44,15 +44,10 @@ class MailSlurpClient:
         if msg.is_multipart():
             html = None
             for part in msg.get_payload():
-
-                print("%s, %s" % (part.get_content_type(), part.get_content_charset()))
-
                 if part.get_content_charset() is None:
                     # We cannot know the character set, so return decoded "something"
                     text = part.get_payload(decode=True)
                     continue
-
-                charset = part.get_content_charset()
 
                 if part.get_content_type() == 'text/plain':
                     text = part.get_payload(decode=True).decode('utf-8')
