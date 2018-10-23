@@ -37,4 +37,4 @@ def message(inbox_id):
     return jsonify(messages)
 
 
-app.run()
+app.run(host='0.0.0.0')
